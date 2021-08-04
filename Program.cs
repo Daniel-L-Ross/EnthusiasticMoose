@@ -4,17 +4,55 @@ Main();
 
 void Main()
 {
-    // Console.WriteLine("Welcome to the Enthusiastic Moose Simulator!");
-    // Console.WriteLine("--------------------------------------------");
-    // Console.WriteLine();
-
-    // CanadaQuestion();
-    // EnthusiasticQuestion();
-    // LoveCSharpQuestion();
-    // SecretQuestion();
-    // MagicMoose();
+    string programChoice = "";
+    bool keepRunning = true;
+    while (keepRunning)
+    {
+    Console.WriteLine("Welcome to the Enthusiastic Moose Simulator!");
+    Console.WriteLine("--------------------------------------------");
+    Console.WriteLine("| What would you like to do?                |");
+    Console.WriteLine("|                                           |");
+    Console.WriteLine("| 1) Ask the moose some questions.          |");
+    Console.WriteLine("| 2) Play rock-paper-scissors.              |");
+    Console.WriteLine("| 3) Seek advice from magic moose.          |");
+    Console.WriteLine("| 4) Exit.                                  |");
+    Console.WriteLine("--------------------------------------------");
+    Console.WriteLine();
+    programChoice = Console.ReadLine();
+    while (programChoice != "1" && programChoice != "2" && programChoice != "3" && programChoice != "4")
+    {
+        Console.WriteLine("Please choose an option listed above");
+        programChoice = Console.ReadLine();
+    }
+    if (programChoice == "1")
+    {
+    AskQuestions();
+    }
+    else if (programChoice == "2")
+    {
     RockPaperScissors();
+    }
+    else if (programChoice == "3")
+    {
+    MagicMoose();
+    }
+    else if (programChoice =="4")
+    {
+        Console.WriteLine("Thanks for stopping by!");
+        keepRunning = false;
+    }
+    }
+
 }
+
+void AskQuestions()
+{
+    CanadaQuestion();
+    EnthusiasticQuestion();
+    LoveCSharpQuestion();
+    SecretQuestion();
+}
+
 void CanadaQuestion()
 {
     bool isTrue = MooseAsks("Is Canada real");
@@ -198,7 +236,7 @@ void RockPaperScissors()
             playerChoice = Console.ReadLine();
         }
         Random randomInt = new Random();
-        int computerChoice = randomInt.Next(1, (3));
+        int computerChoice = randomInt.Next(1, 4);
         if (playerChoice == "1")
         {
             Console.WriteLine(rock);
