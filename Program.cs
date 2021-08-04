@@ -188,19 +188,77 @@ void RockPaperScissors()
         Console.WriteLine("3) Scissors");
         playerChoice = Console.ReadLine();
     }
-    scoreAndOptions();
 
     while (playerScore < 3 && computerScore < 3)
     {
+        scoreAndOptions();
         while (playerChoice != "1" && playerChoice != "2" && playerChoice != "3")
         {
             Console.WriteLine("Please choose a valid choice");
             playerChoice = Console.ReadLine();
         }
         Random randomInt = new Random();
-        int responsePosition = randomInt.Next(1, (3));
+        int computerChoice = randomInt.Next(1, (3));
+        if (playerChoice == "1")
+        {
+            Console.WriteLine(rock);
+        }
+        else if (playerChoice == "2")
+        {
+            Console.WriteLine(paper);
+        }
+        else if (playerChoice == "3")
+        {
+            Console.WriteLine(scissors);
+        }
 
-        scoreAndOptions();
+        Console.WriteLine("VS");
+
+        if (computerChoice == 1)
+        {
+            Console.WriteLine(rock);
+        }
+        else if (computerChoice == 2)
+        {
+            Console.WriteLine(paper);
+        }
+        else if (computerChoice == 3)
+        {
+            Console.WriteLine(scissors);
+        }
+
+        if (playerChoice == "1" && computerChoice == 2)
+        {
+            computerScore = computerScore + 1;
+        }
+        else if (playerChoice == "1" && computerChoice == 3)
+        {
+            playerScore = playerScore + 1;
+        }
+        else if (playerChoice == "2" && computerChoice == 1)
+        {
+            playerScore = playerScore + 1;
+        }
+        else if (playerChoice == "2" && computerChoice == 3)
+        {
+            computerScore = computerScore + 1;
+        }
+        else if (playerChoice == "3" && computerChoice == 1)
+        {
+            computerScore = computerScore + 1;
+        }
+        else if (playerChoice == "3" && computerChoice == 2)
+        {
+            playerScore = playerScore + 1;
+        }
     }
 
+    if (playerScore == 3)
+    {
+        Console.WriteLine("You Win!");
+    }
+    else
+    {
+        Console.WriteLine("You Lost!");
+    }
 }
