@@ -12,7 +12,8 @@ void Main()
     // EnthusiasticQuestion();
     // LoveCSharpQuestion();
     // SecretQuestion();
-    MagicMoose();
+    // MagicMoose();
+    RockPaperScissors();
 }
 void CanadaQuestion()
 {
@@ -135,10 +136,71 @@ void MagicMoose()
     while (playing)
     {
         Random randomInt = new Random();
-        int  responsePosition = randomInt.Next(0, (responses.Count - 1));
+        int responsePosition = randomInt.Next(0, (responses.Count - 1));
         Console.WriteLine($" Magic moose says: {responses[responsePosition]}");
         Console.WriteLine("Ask the magic-moose another question... : ");
         question = Console.ReadLine();
         playing = !(String.IsNullOrWhiteSpace(question));
     }
+}
+
+void RockPaperScissors()
+{
+    string rock = @"
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+    ";
+
+    string paper = @"
+     _______
+---'    ____)____
+           ______)
+          _______)
+         _______)
+---.__________)
+    ";
+
+    string scissors = @"
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+    ";
+
+    int playerScore = 0;
+    int computerScore = 0;
+    string playerChoice = "1";
+    void scoreAndOptions()
+    {
+
+        Console.WriteLine("---------------------------");
+        Console.WriteLine($"| Player: {playerScore} | Computer: {computerScore} |");
+        Console.WriteLine("---------------------------");
+        Console.WriteLine("What would you like to throw");
+        Console.WriteLine("1) Rock");
+        Console.WriteLine("2) Paper");
+        Console.WriteLine("3) Scissors");
+        playerChoice = Console.ReadLine();
+    }
+    scoreAndOptions();
+
+    while (playerScore < 3 && computerScore < 3)
+    {
+        while (playerChoice != "1" && playerChoice != "2" && playerChoice != "3")
+        {
+            Console.WriteLine("Please choose a valid choice");
+            playerChoice = Console.ReadLine();
+        }
+        Random randomInt = new Random();
+        int responsePosition = randomInt.Next(1, (3));
+
+        scoreAndOptions();
+    }
+
 }
